@@ -1,0 +1,88 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum Role {
+  ADMIN
+  STUDENT
+  UNIVERSITY_SERVER
+  DEFAULT
+}
+
+model User {
+  id               String             @id @default(uuid())
+  name             String
+  passport         String             @unique
+  password_hash    String
+  role             Role               @default(DEFAULT)
+  Student          Student[]
+  UniversityServer UniversityServer[]
+  Wallet           Wallet[]
+
+  @@map("users")
+}
+
+model Student {
+  id              String  @id @default(uuid())
+  rga             String  @unique
+  unique_register String?
+
+  user    User   @relation(fields: [user_id], references: [id])
+  user_id String
+
+  @@map("students")
+}
+
+model UniversityServer {
+  id    String @id @default(uuid())
+  siape String @unique
+
+  user    User   @relation(fields: [user_id], references: [id])
+  user_id String
+
+  @@map("university_servers")
+}
+
+model Wallet {
+  id             String           @id @default(uuid())
+  balance        Decimal
+  user           User             @relation(fields: [user_id], references: [id])
+  user_id        String
+  WalletRecharge WalletRecharge[]
+  Ticket         Ticket[]
+
+  @@map("wallets")
+}
+
+model WalletRecharge {
+  id String @id @default(uuid())
+
+  amount Decimal
+
+  created_at DateTime @default(now())
+
+  wallet    Wallet @relation(fields: [wallet_id], references: [id])
+  wallet_id String
+
+  @@map("wallet_recharges")
+}
+
+model Ticket {
+  id           String    @id @default(uuid())
+  price        Decimal
+  purchased_at DateTime  @default(now())
+  validated_at DateTime?
+
+  wallet    Wallet @relation(fields: [wallet_id], references: [id])
+  wallet_id String
+
+  @@map("tickets")
+}
