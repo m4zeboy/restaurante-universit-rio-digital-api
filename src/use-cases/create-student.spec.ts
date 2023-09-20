@@ -20,7 +20,7 @@ describe('Create Student Use Case', () => {
       name: 'John Doe',
       passport: 'john.doe',
       password_hash: 'password_hash',
-      role: 'USER',
+      role: 'STUDENT',
     })
     const { student } = await sut.execute({
       rga: '2023.0000.00-0',

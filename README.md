@@ -3,8 +3,8 @@
 ## Use cases
 
 - [x] register
-  - [ ] create student
-  - [ ] create university server
+  - [x] create student
+  - [x] create university server
 - [ ] authenticate
 - [ ] create dishes
 - [ ] get dish of the day
