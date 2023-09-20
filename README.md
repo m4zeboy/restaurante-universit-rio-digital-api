@@ -7,7 +7,7 @@
 - [x] create university server
 - [x] authenticate
 - [x] create dishes
-- [ ] get dish of the day
+- [x] get dish of the day
 - [ ] recharge wallet
 - [ ] purchase ticket
 - [ ] validate ticket
@@ -26,9 +26,10 @@
 - [x] it should be able to authenticate
 - [ ] it should not be able to authenticate with invalid credentials
 - [x] create dishes
-- [ ] get dish of the day
+- [x] get dish of the day
 - [ ] recharge wallet
 - [ ] purchase ticket
+- [ ] list purchased tickets
 - [ ] validate ticket
 
 

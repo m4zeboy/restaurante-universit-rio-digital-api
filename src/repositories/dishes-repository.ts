@@ -12,5 +12,5 @@ export interface DishesRepository {
     date: Date
   }): Promise<Dish>
 
-  // findByRga(rga: string): Promise<Student | null>
+  findByDate(date: Date): Promise<Dish | null>
 }

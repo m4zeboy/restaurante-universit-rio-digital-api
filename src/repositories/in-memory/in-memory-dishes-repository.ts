@@ -1,9 +1,15 @@
 import { Dish } from '@prisma/client'
 import { randomUUID } from 'node:crypto'
 import { DishesRepository } from '../dishes-repository'
+import dayjs from 'dayjs'
 
 export class InMemoryDishesRepository implements DishesRepository {
   public items: Dish[] = []
+  async findByDate(date: Date) {
+    const dish = this.items.find((item) => dayjs(date).isSame(item.date))
+    if (!dish) return null
+    return dish
+  }
 
   async create(data: {
     id?: string
