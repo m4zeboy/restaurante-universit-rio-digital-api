@@ -8,6 +8,8 @@
 - [x] authenticate
 - [x] create dishes
 - [x] get dish of the day
+- [x] create wallet
+- [ ] get wallet balance
 - [ ] recharge wallet
 - [ ] purchase ticket
 - [ ] validate ticket
@@ -21,12 +23,15 @@
 - [x] it should not be able to register with same passport twice
 - [x] it sould be able to create student
 - [ ] it should not be able to create student with same RGA twice
-- [x] create university server
+- [x] it should be able to create university server
 - [ ] it should not be able to create university server with same SIAPE twice
 - [x] it should be able to authenticate
 - [ ] it should not be able to authenticate with invalid credentials
-- [x] create dishes
-- [x] get dish of the day
+- [x] it should be able create dishes
+- [x] it should eb able to get dish of the day
+- [x] it should be able to create a wallet
+- [ ] it should not be able to create a wallet with non-existent userId
+- [ ] it should not be able to create a wallet with same userId twice
 - [ ] recharge wallet
 - [ ] purchase ticket
 - [ ] list purchased tickets
