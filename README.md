@@ -1,9 +1,13 @@
 # Restaurante Universitário Digial - API
 
-## Estrutura do projeto
+## Use cases
 
-- [x] Iniciar projeto em node
-- [x] Scripts
-- [x] Versões exatas do npm
-- [x] Carregar varíaveis de ambiente
-- [x] Criar aliases de importação
+- [x] register
+  - [ ] create student
+  - [ ] create university server
+- [ ] authenticate
+- [ ] create dishes
+- [ ] get dish of the day
+- [ ] recharge wallet
+- [ ] purchase ticket
+- [ ] validate ticket

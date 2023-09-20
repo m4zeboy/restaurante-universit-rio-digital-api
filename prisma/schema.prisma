@@ -14,7 +14,7 @@ enum Role {
   ADMIN
   STUDENT
   UNIVERSITY_SERVER
-  DEFAULT
+  USER
 }
 
 model User {
@@ -22,7 +22,7 @@ model User {
   name             String
   passport         String             @unique
   password_hash    String
-  role             Role               @default(DEFAULT)
+  role             Role               @default(USER)
   Student          Student[]
   UniversityServer UniversityServer[]
   Wallet           Wallet[]
