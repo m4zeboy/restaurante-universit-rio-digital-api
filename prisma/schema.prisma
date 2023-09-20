@@ -86,3 +86,16 @@ model Ticket {
 
   @@map("tickets")
 }
+
+model Dish {
+  id              String   @id @default(uuid())
+  main_dish       String
+  vegan_main_dish String
+  follow_up       String
+  base_dish       String
+  salad           String
+  dessert         String
+  date            DateTime
+
+  @@map("dishes")
+}
