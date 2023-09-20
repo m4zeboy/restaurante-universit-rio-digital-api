@@ -15,6 +15,8 @@
 ### Unitary tests
 
 - [x] it should be able to register
+- [x] it should be able to register a student
+- [x] it should be able to register a university server
 - [x] it should be hash password upon registration
 - [x] it should not be able to register with same passport twice
 - [x] it sould be able to create student
@@ -33,10 +35,10 @@
 ## Factories
 
 - [x] register
-  - [] create student
-  - [] create university server
-- [] authenticate
-- [] create dishes
+- [ ] create student
+- [ ] create university server
+- [ ] authenticate
+- [ ] create dishes
 - [ ] get dish of the day
 - [ ] recharge wallet
 - [ ] purchase ticket

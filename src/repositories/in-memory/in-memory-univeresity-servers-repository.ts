@@ -6,11 +6,11 @@ export class InMemoryUniversityServersRepository
   implements UniversityServersRepository {
   public items: UniversityServer[] = []
 
-  async create(data: { userId: string; siape: string }) {
+  async create(data: { siape: string; passport: string }) {
     const item: UniversityServer = {
       id: randomUUID(),
       siape: data.siape,
-      user_id: data.userId,
+      passport: data.passport,
     }
 
     this.items.push(item)
@@ -20,6 +20,12 @@ export class InMemoryUniversityServersRepository
 
   async findBySiape(siape: string) {
     const item = this.items.find((item) => item.siape === siape)
+    if (!item) return null
+    return item
+  }
+
+  async findByPassport(passport: string) {
+    const item = this.items.find((item) => item.passport === passport)
     if (!item) return null
     return item
   }

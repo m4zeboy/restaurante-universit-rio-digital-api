@@ -18,14 +18,13 @@ enum Role {
 }
 
 model User {
-  id               String             @id @default(uuid())
-  name             String
-  passport         String             @unique
-  password_hash    String
-  role             Role               @default(USER)
-  Student          Student[]
-  UniversityServer UniversityServer[]
-  Wallet           Wallet[]
+  id            String @id @default(uuid())
+  name          String
+  passport      String @unique
+  password_hash String
+  role          Role   @default(USER)
+
+  Wallet Wallet[]
 
   @@map("users")
 }
@@ -34,19 +33,15 @@ model Student {
   id              String  @id @default(uuid())
   rga             String  @unique
   unique_register String?
-
-  user    User   @relation(fields: [user_id], references: [id])
-  user_id String
+  passport        String  @unique
 
   @@map("students")
 }
 
 model UniversityServer {
-  id    String @id @default(uuid())
-  siape String @unique
-
-  user    User   @relation(fields: [user_id], references: [id])
-  user_id String
+  id       String @id @default(uuid())
+  siape    String @unique
+  passport String @unique
 
   @@map("university_servers")
 }

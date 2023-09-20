@@ -3,26 +3,31 @@ import { randomUUID } from 'node:crypto'
 import { StudentsRepository } from '../students-repository'
 
 export class InMemoryStudentsRepository implements StudentsRepository {
-  public students: Student[] = []
+  public items: Student[] = []
+  async findByPassport(passport: string) {
+    const student = this.items.find((student) => student.passport === passport)
+    if (!student) return null
+    return student
+  }
 
   async create(data: {
-    userId: string
     rga: string
     uniqueRegister?: string | undefined
+    passport: string
   }) {
     const student: Student = {
       id: randomUUID(),
       rga: data.rga,
       unique_register: data.uniqueRegister ? data.uniqueRegister : null,
-      user_id: data.userId,
+      passport: data.passport,
     }
 
-    this.students.push(student)
+    this.items.push(student)
     return student
   }
 
   async findByRga(rga: string) {
-    const student = this.students.find((student) => student.rga === rga)
+    const student = this.items.find((student) => student.rga === rga)
     if (!student) return null
     return student
   }
