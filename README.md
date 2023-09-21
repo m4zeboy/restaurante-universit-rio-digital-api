@@ -24,7 +24,7 @@
 - [x] it sould be able to create student
 - [x] it should not be able to create student with same RGA twice
 - [x] it should be able to create university server
-- [ ] it should not be able to create university server with same SIAPE twice
+- [x] it should not be able to create university server with same SIAPE twice
 - [x] it should be able to authenticate
 - [ ] it should not be able to authenticate with invalid credentials
 - [x] it should be able create dishes
