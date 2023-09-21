@@ -37,7 +37,6 @@ export class PurchaseTicketUseCase {
       throw new ResourceNotFoundError()
     }
 
-    // verify the price of the ticket according to the user
     let PRICE = 15
 
     const checkDiscountEligibilityUseCase = new CheckDiscountEligibilityUseCase(
@@ -47,8 +46,8 @@ export class PurchaseTicketUseCase {
     const { isEligible } = await checkDiscountEligibilityUseCase.execute({
       user,
     })
+
     isEligible ? (PRICE = 3) : (PRICE = 15)
-    // verify if the user has enough balance in the wallet
 
     if (wallet.balance.toNumber() < PRICE) {
       throw new Error('Insuficient balance')
@@ -58,7 +57,6 @@ export class PurchaseTicketUseCase {
       walletId: wallet.id,
       price: PRICE,
     })
-    // update the balance in the wallet
     await this.walletsRepository.updateBalance({
       walletId: wallet.id,
       amount: -PRICE,

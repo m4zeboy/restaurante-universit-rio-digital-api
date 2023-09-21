@@ -91,10 +91,11 @@ describe('Purchase Ticket Use Case', () => {
       amount: 50,
     })
 
-    await sut.execute({
+    const { ticket } = await sut.execute({
       userId: 'user-1',
     })
     wallet = await walletsRepository.findByUserId('user-1')
+    expect(ticket.id).toEqual(expect.any(String))
     expect(wallet?.balance.toNumber()).toEqual(50 - 15)
   })
 
@@ -123,11 +124,12 @@ describe('Purchase Ticket Use Case', () => {
       amount: 50,
     })
 
-    await sut.execute({
+    const { ticket } = await sut.execute({
       userId: 'user-1',
     })
 
     const wallet = await walletsRepository.findByUserId('user-1')
+    expect(ticket.id).toEqual(expect.any(String))
     expect(wallet?.balance.toNumber()).toEqual(50 - 3)
   })
 })
