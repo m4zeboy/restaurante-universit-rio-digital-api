@@ -11,7 +11,8 @@
 - [x] create wallet
 - [x] get wallet balance
 - [x] recharge wallet
-- [ ] purchase ticket
+- [x] purchase ticket
+- [x] list purchased tickets 
 - [ ] validate ticket
 
 ### Unitary tests
@@ -39,7 +40,8 @@
 - [x] it should not be able to purchase a ticket with insufficient balance
 - [x] it should update the wallet balance after a ticket purchase
 - [x] it should be able for a student eligible for the scholarship to pay less
-- [ ] list purchased tickets
+- [x] it should be able to list purchased tickets
+- [ ] it should be able to list paginated purchased tickets
 - [ ] validate ticket
 
 

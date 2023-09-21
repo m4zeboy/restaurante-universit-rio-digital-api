@@ -5,6 +5,11 @@ import { Ticket } from '@prisma/client'
 
 export class InMemoryTicketsRepository implements TicketsRepository {
   public items: Ticket[] = []
+  async findManyByWalletId(walletId: string) {
+    const items = this.items.filter((item) => item.wallet_id === walletId)
+    return items
+  }
+
   async create(data: { walletId: string; price: number }) {
     const ticket: Ticket = {
       id: randomUUID(),
