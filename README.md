@@ -30,8 +30,8 @@
 - [x] it should be able create dishes
 - [x] it should eb able to get dish of the day
 - [x] it should be able to create a wallet
-- [ ] it should not be able to create a wallet with non-existent userId
-- [ ] it should not be able to create a wallet with same userId twice
+- [x] it should not be able to create a wallet with non-existent userId
+- [x] it should not be able to create a wallet with same userId twice
 - [x] it should be able to create a wallet recharge
 - [x] it should not be able to create a wallet with amount less than or equal to zero
 - [x] it should update the wallet balance after a wallet recharge
