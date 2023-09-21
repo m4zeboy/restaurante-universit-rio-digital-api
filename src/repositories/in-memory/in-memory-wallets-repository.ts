@@ -1,11 +1,17 @@
-import { Student, Wallet } from '@prisma/client'
+import { Wallet } from '@prisma/client'
 import { randomUUID } from 'node:crypto'
-import { StudentsRepository } from '../students-repository'
 import { WalletsRepository } from '../wallets-repository'
 import { Decimal } from '@prisma/client/runtime/library'
 
 export class InMemoryWalletsRepository implements WalletsRepository {
   public items: Wallet[] = []
+  async updateBalance(data: { walletId: string; amount: number }) {
+    const item = this.items.find((item) => item.id === data.walletId)
+    if (!item) return null
+    item.balance = item.balance.add(new Decimal(data.amount))
+    return item
+  }
+
   async create(data: { userId: string }) {
     const item: Wallet = {
       id: randomUUID(),
