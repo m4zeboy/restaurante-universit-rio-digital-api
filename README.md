@@ -26,7 +26,7 @@
 - [x] it should be able to create university server
 - [x] it should not be able to create university server with same SIAPE twice
 - [x] it should be able to authenticate
-- [ ] it should not be able to authenticate with invalid credentials
+- [x] it should not be able to authenticate with invalid credentials
 - [x] it should be able create dishes
 - [x] it should eb able to get dish of the day
 - [x] it should be able to create a wallet
