@@ -9,7 +9,7 @@
 - [x] create dishes
 - [x] get dish of the day
 - [x] create wallet
-- [ ] get wallet balance
+- [x] get wallet balance
 - [ ] recharge wallet
 - [ ] purchase ticket
 - [ ] validate ticket
