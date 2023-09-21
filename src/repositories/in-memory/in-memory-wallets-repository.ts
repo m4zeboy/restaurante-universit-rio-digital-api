@@ -12,9 +12,9 @@ export class InMemoryWalletsRepository implements WalletsRepository {
     return item
   }
 
-  async create(data: { userId: string }) {
+  async create(data: { id?: string; userId: string }) {
     const item: Wallet = {
-      id: randomUUID(),
+      id: data.id ? data.id : randomUUID(),
       balance: new Decimal(0),
       user_id: data.userId,
     }

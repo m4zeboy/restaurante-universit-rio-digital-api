@@ -10,7 +10,7 @@
 - [x] get dish of the day
 - [x] create wallet
 - [x] get wallet balance
-- [ ] recharge wallet
+- [x] recharge wallet
 - [ ] purchase ticket
 - [ ] validate ticket
 
@@ -35,7 +35,10 @@
 - [x] it should be able to create a wallet recharge
 - [x] it should not be able to create a wallet with amount less than or equal to zero
 - [x] it should update the wallet balance after a wallet recharge
-- [ ] purchase ticket
+- [x] it should be able to purchase ticket
+- [x] it should not be able to purchase a ticket with insufficient balance
+- [x] it should update the wallet balance after a ticket purchase
+- [x] it should be able for a student eligible for the scholarship to pay less
 - [ ] list purchased tickets
 - [ ] validate ticket
 
