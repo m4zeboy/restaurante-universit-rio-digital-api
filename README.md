@@ -22,7 +22,7 @@
 - [x] it should be hash password upon registration
 - [x] it should not be able to register with same passport twice
 - [x] it sould be able to create student
-- [ ] it should not be able to create student with same RGA twice
+- [x] it should not be able to create student with same RGA twice
 - [x] it should be able to create university server
 - [ ] it should not be able to create university server with same SIAPE twice
 - [x] it should be able to authenticate
