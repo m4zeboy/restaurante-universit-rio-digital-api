@@ -3,6 +3,7 @@ import { WalletsRepository } from '@/repositories/wallets-repository'
 import { UsersRepository } from '@/repositories/users-repository'
 import { ResourceNotFoundError } from './errors/resource-not-found'
 import { WalletRechargesRepository } from '@/repositories/wallet-recharges-repository'
+import { InvalidRechargeAmountError } from './errors/invalid-recharge-amount'
 
 interface RechargeWalletUseCaseRequest {
   userId: string
@@ -36,19 +37,14 @@ export class RechargeWalletUseCase {
     }
 
     if (data.amount <= 0) {
-      throw new Error(
-        'The recharge value cannot be less than or equal to zero.',
-      )
+      throw new InvalidRechargeAmountError()
     }
-
-    // const { id: walletId } = wallet
 
     const walletRecharge = await this.walletRechargesRepository.create({
       amount: data.amount,
       walletId: wallet.id,
     })
 
-    // update wallet balance
     await this.walletsRepository.updateBalance({
       walletId: wallet.id,
       amount: data.amount,

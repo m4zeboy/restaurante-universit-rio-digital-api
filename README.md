@@ -32,8 +32,9 @@
 - [x] it should be able to create a wallet
 - [ ] it should not be able to create a wallet with non-existent userId
 - [ ] it should not be able to create a wallet with same userId twice
-- [ ] it should be able to create a wallet recharge
-- [ ] it should update the wallet balance after a wallet recharge
+- [x] it should be able to create a wallet recharge
+- [x] it should not be able to create a wallet with amount less than or equal to zero
+- [x] it should update the wallet balance after a wallet recharge
 - [ ] purchase ticket
 - [ ] list purchased tickets
 - [ ] validate ticket

@@ -3,6 +3,7 @@ import { InMemoryUsersRepository } from '@/repositories/in-memory/in-memory-user
 import { InMemoryWalletsRepository } from '@/repositories/in-memory/in-memory-wallets-repository'
 import { InMemoryWalletRechargesRepository } from '@/repositories/in-memory/in-memory-wallet-recharges-repository'
 import { RechargeWalletUseCase } from './recharge-wallet'
+import { InvalidRechargeAmountError } from './errors/invalid-recharge-amount'
 
 let usersRepository: InMemoryUsersRepository
 let walletsRepository: InMemoryWalletsRepository
@@ -39,5 +40,50 @@ describe('Recharge Wallet Use Case', () => {
       amount: 50,
     })
     expect(walletRecharge.id).toEqual(expect.any(String))
+  })
+
+  it('should update the wallet balance after a wallet recharge', async () => {
+    await usersRepository.create({
+      id: 'user-1',
+      name: 'John Doe',
+      passport: 'john.doe',
+      password_hash: 'password_hash',
+      role: 'STUDENT',
+    })
+
+    await walletsRepository.create({
+      userId: 'user-1',
+    })
+
+    const { walletRecharge } = await sut.execute({
+      userId: 'user-1',
+      amount: 50,
+    })
+
+    expect(walletRecharge.id).toEqual(expect.any(String))
+
+    const wallet = await walletsRepository.findByUserId('user-1')
+    expect(wallet?.balance.toNumber()).toEqual(50)
+  })
+
+  it('should not be able to create a wallet with amount less than or equal to zero', async () => {
+    await usersRepository.create({
+      id: 'user-1',
+      name: 'John Doe',
+      passport: 'john.doe',
+      password_hash: 'password_hash',
+      role: 'STUDENT',
+    })
+
+    await walletsRepository.create({
+      userId: 'user-1',
+    })
+
+    await expect(() =>
+      sut.execute({
+        userId: 'user-1',
+        amount: 0,
+      }),
+    ).rejects.toBeInstanceOf(InvalidRechargeAmountError)
   })
 })
