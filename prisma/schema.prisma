@@ -50,7 +50,7 @@ model Wallet {
   id             String           @id @default(uuid())
   balance        Decimal
   user           User             @relation(fields: [user_id], references: [id])
-  user_id        String
+  user_id        String           @unique
   WalletRecharge WalletRecharge[]
   Ticket         Ticket[]
 
