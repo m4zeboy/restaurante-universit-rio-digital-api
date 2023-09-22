@@ -99,7 +99,9 @@
   - [x] create
   - [x] findBySiape
   - [x] findByPassport
-- [ ] dishes
+- [x] dishes
+  - [x] create
+  - [x] findByDate
 - [ ] wallet recharges
 - [ ] wallets
 - [ ] tickets
