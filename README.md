@@ -85,6 +85,25 @@
 - [x] it should not be able to validate a ticket twice
 
 
+## Prisma Repositories
+
+- [x] users
+  - [x] create
+  - [x] findByPassport
+  - [x] findById
+- [x] students
+  - [x] create
+  - [x] findByPassport
+  - [x] findByRga
+- [ ] university servers
+- [ ] dishes
+- [ ] wallet recharges
+- [ ] wallets
+- [ ] tickets
+
+
+
+
 ## Factories
 
 - [x] register
