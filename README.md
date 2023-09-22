@@ -18,6 +18,7 @@
   - [x] implement a `findById` method for the InMemoryTicketsRepository
   - [x] define a `save` method for the TicketsRepository
   - [x] implement a `save` method for the InMemoryTicketsRepository
+  - [x] create a error class for 'The ticket has already been validated.'
 
 
 ### Unitary tests
@@ -79,7 +80,9 @@
 
 **validate ticket**
 
-- [ ] validate ticket
+- [x] it should be able to validate ticket
+- [x] it should not be able to validate a non-existent ticket
+- [x] it should not be able to validate a ticket twice
 
 
 ## Factories
