@@ -93,9 +93,12 @@
   - [x] findById
 - [x] students
   - [x] create
-  - [x] findByPassport
   - [x] findByRga
-- [ ] university servers
+  - [x] findByPassport
+- [x] university servers
+  - [x] create
+  - [x] findBySiape
+  - [x] findByPassport
 - [ ] dishes
 - [ ] wallet recharges
 - [ ] wallets
