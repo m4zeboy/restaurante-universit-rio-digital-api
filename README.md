@@ -13,7 +13,12 @@
 - [x] recharge wallet
 - [x] purchase ticket
 - [x] list purchased tickets 
-- [ ] validate ticket
+- [x] validate ticket
+  - [x] define a `findById` method for the TicketsRepository
+  - [x] implement a `findById` method for the InMemoryTicketsRepository
+  - [x] define a `save` method for the TicketsRepository
+  - [x] implement a `save` method for the InMemoryTicketsRepository
+
 
 ### Unitary tests
 

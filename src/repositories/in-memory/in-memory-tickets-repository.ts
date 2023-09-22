@@ -5,6 +5,19 @@ import { Ticket } from '@prisma/client'
 
 export class InMemoryTicketsRepository implements TicketsRepository {
   public items: Ticket[] = []
+  async save(ticket: Ticket): Promise<void> {
+    const ticketIndex = this.items.findIndex((item) => item.id === ticket.id)
+    if (ticketIndex >= 0) {
+      this.items[ticketIndex] = ticket
+    }
+  }
+
+  async findById(ticketId: string) {
+    const item = this.items.find((item) => item.id === ticketId)
+    if (!item) return null
+    return item
+  }
+
   async findManyByWalletId(walletId: string) {
     const items = this.items.filter((item) => item.wallet_id === walletId)
     return items
