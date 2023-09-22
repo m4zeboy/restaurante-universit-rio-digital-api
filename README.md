@@ -108,7 +108,11 @@
   - [x] findByUserId
 - [x] wallet recharges
   - [x] create
-- [ ] tickets
+- [x] tickets
+  - [x] create
+  - [x] findById
+  - [x] findManyByWalletId
+  - [x] save
 
 
 
