@@ -120,14 +120,17 @@
 ## Factories
 
 - [x] register
-- [ ] create student
-- [ ] create university server
-- [ ] authenticate
-- [ ] create dishes
-- [ ] get dish of the day
-- [ ] recharge wallet
-- [ ] purchase ticket
-- [ ] validate ticket
+- [x] create student
+- [x] create university server
+- [x] authenticate
+- [x] create dishes
+- [x] get dish of the day
+- [x] create wallet
+- [x] get wallet balance
+- [x] recharge wallet
+- [x] purchase ticket
+- [x] list purchased ticket
+- [x] validate ticket
 
 
 ## Controllers

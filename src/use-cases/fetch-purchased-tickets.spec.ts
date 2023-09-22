@@ -2,20 +2,20 @@ import { expect, describe, it, beforeEach } from 'vitest'
 import { InMemoryUsersRepository } from '@/repositories/in-memory/in-memory-users-repository'
 import { InMemoryWalletsRepository } from '@/repositories/in-memory/in-memory-wallets-repository'
 import { InMemoryTicketsRepository } from '@/repositories/in-memory/in-memory-tickets-repository'
-import { FetchPurchasesTicketsUseCase } from './fetch-purchased-tickets'
+import { FetchPurchasedTicketsUseCase } from './fetch-purchased-tickets'
 
 let usersRepository: InMemoryUsersRepository
 let walletsRepository: InMemoryWalletsRepository
 let ticketsRepository: InMemoryTicketsRepository
 
-let sut: FetchPurchasesTicketsUseCase
+let sut: FetchPurchasedTicketsUseCase
 
 describe('Fetch Purchase Ticket Use Case', () => {
   beforeEach(() => {
     usersRepository = new InMemoryUsersRepository()
     walletsRepository = new InMemoryWalletsRepository()
     ticketsRepository = new InMemoryTicketsRepository()
-    sut = new FetchPurchasesTicketsUseCase(
+    sut = new FetchPurchasedTicketsUseCase(
       walletsRepository,
       usersRepository,
       ticketsRepository,

@@ -12,7 +12,7 @@ interface FetchPurchasesTicketsUseCaseReply {
   purchasedTickets: Ticket[]
 }
 
-export class FetchPurchasesTicketsUseCase {
+export class FetchPurchasedTicketsUseCase {
   constructor(
     private walletsRepository: WalletsRepository,
     private usersRepository: UsersRepository,
