@@ -106,7 +106,8 @@
   - [x] create
   - [x] updateBalance
   - [x] findByUserId
-- [ ] wallet recharges
+- [x] wallet recharges
+  - [x] create
 - [ ] tickets
 
 
