@@ -102,8 +102,11 @@
 - [x] dishes
   - [x] create
   - [x] findByDate
+- [x] wallets
+  - [x] create
+  - [x] updateBalance
+  - [x] findByUserId
 - [ ] wallet recharges
-- [ ] wallets
 - [ ] tickets
 
 
