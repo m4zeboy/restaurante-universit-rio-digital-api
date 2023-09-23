@@ -135,7 +135,9 @@
 
 ## Controllers
 
-- [ ] Register
+- [x] Register
+  - [x] register use case
+  - [x] create walelt use case
 - [ ] Authenticate
 - [ ] get dish of the day
 - [ ] recharge wallet
