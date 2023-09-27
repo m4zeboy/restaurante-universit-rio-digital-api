@@ -49,6 +49,7 @@
 **create dishes**
 
 - [x] it should be able create dishes
+- [ ] it should not be able to create a dish with the same date twice
 
 **get dish of the day**
 
@@ -138,8 +139,9 @@
 - [x] Register
   - [x] register use case
   - [x] create walelt use case
-- [ ] Authenticate
-- [ ] get dish of the day
+- [x] Authenticate
+- [x] create dish
+- [x] get dish of the day
 - [ ] recharge wallet
 - [ ] purchase ticket
 - [ ] validate ticket
