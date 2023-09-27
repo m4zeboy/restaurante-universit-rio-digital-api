@@ -155,3 +155,17 @@
 - [ ] recharge wallet
 - [ ] purchase ticket
 - [ ] validate ticket
+
+
+## TODO
+
+- [x] add role based acces control on controllers
+  - [x] register: no required role
+  - [x] authenticate: no required role
+  - [x] create student: admin
+  - [x] create university server: admin
+  - [x] create dish: admin
+  - [x] get dish of the day: all roles
+  - [x] recharge: all roles
+  - [x] purchase: all roles
+  - [] validate: admin
