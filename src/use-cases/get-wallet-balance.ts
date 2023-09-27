@@ -1,8 +1,6 @@
-import { Wallet } from '@prisma/client'
 import { WalletsRepository } from '@/repositories/wallets-repository'
 import { UsersRepository } from '@/repositories/users-repository'
 import { ResourceNotFoundError } from './errors/resource-not-found'
-import { WalletAlreadyExistsError } from './errors/wallet-already-exists'
 import { Decimal } from '@prisma/client/runtime/library'
 
 interface GetWalletBalanceUseCaseRequest {

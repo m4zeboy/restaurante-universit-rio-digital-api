@@ -142,9 +142,10 @@
 - [x] Authenticate
 - [x] create dish
 - [x] get dish of the day
-- [ ] recharge wallet
-- [ ] purchase ticket
-- [ ] validate ticket
+- [x] recharge wallet
+- [x] get wallet balance
+- [x] purchase ticket
+- [x] validate ticket
 
 ### End to End tests
 

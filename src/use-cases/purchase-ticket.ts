@@ -5,6 +5,7 @@ import { ResourceNotFoundError } from './errors/resource-not-found'
 import { TicketsRepository } from '@/repositories/tickets-repository'
 import { StudentsRepository } from '@/repositories/students-repository'
 import { CheckDiscountEligibilityUseCase } from './check-discount-eligibility'
+import { InsuficientBalanceError } from './errors/insuficient-balance'
 
 interface PurchaseTicketUseCaseRequest {
   userId: string
@@ -50,7 +51,7 @@ export class PurchaseTicketUseCase {
     isEligible ? (PRICE = 3) : (PRICE = 15)
 
     if (wallet.balance.toNumber() < PRICE) {
-      throw new Error('Insuficient balance')
+      throw new InsuficientBalanceError()
     }
 
     const ticket = await this.ticketsRepository.create({
