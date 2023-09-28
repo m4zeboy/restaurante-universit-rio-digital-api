@@ -18,6 +18,7 @@ export async function students(request: FastifyRequest, reply: FastifyReply) {
     const { student } = await useCase.execute(data)
     return reply.status(201).send({ student })
   } catch (error) {
+    console.log(error)
     if (
       error instanceof StudentAlreadyExistsError ||
       error instanceof UserAlreadyExistsError

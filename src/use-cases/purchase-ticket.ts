@@ -4,8 +4,9 @@ import { UsersRepository } from '@/repositories/users-repository'
 import { ResourceNotFoundError } from './errors/resource-not-found'
 import { TicketsRepository } from '@/repositories/tickets-repository'
 import { StudentsRepository } from '@/repositories/students-repository'
-import { CheckDiscountEligibilityUseCase } from './check-discount-eligibility'
 import { InsuficientBalanceError } from './errors/insuficient-balance'
+import { getTicketPrice } from '@/utils/get-ticket-price'
+import { GetTicketPriceUseCase } from './get-ticket-price'
 
 interface PurchaseTicketUseCaseRequest {
   userId: string
@@ -38,29 +39,24 @@ export class PurchaseTicketUseCase {
       throw new ResourceNotFoundError()
     }
 
-    let PRICE = 15
-
-    const checkDiscountEligibilityUseCase = new CheckDiscountEligibilityUseCase(
+    const getTicketPriceUseCase = new GetTicketPriceUseCase(
       this.studentsRepository,
     )
 
-    const { isEligible } = await checkDiscountEligibilityUseCase.execute({
-      user,
-    })
+    const { price } = await getTicketPriceUseCase.execute({ user })
 
-    isEligible ? (PRICE = 3) : (PRICE = 15)
-
-    if (wallet.balance.toNumber() < PRICE) {
+    if (user.role !== 'ADMIN' && wallet.balance.toNumber() < price) {
       throw new InsuficientBalanceError()
     }
 
     const ticket = await this.ticketsRepository.create({
       walletId: wallet.id,
-      price: PRICE,
+      price,
     })
+
     await this.walletsRepository.updateBalance({
       walletId: wallet.id,
-      amount: -PRICE,
+      amount: -price,
     })
 
     return { ticket }

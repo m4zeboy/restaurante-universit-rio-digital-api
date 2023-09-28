@@ -2,14 +2,20 @@ import { expect, describe, it, beforeEach } from 'vitest'
 import { InMemoryStudentsRepository } from '@/repositories/in-memory/in-memory-students-repository'
 import { CreateStudentUseCase } from './create-student'
 import { StudentAlreadyExistsError } from './errors/student-already-exists'
+import { InMemoryUniversityServersRepository } from '@/repositories/in-memory/in-memory-univeresity-servers-repository'
 
 let studentsRepository: InMemoryStudentsRepository
+let universityServersRepository: InMemoryUniversityServersRepository
 let sut: CreateStudentUseCase
 
 describe('Create Student Use Case', () => {
   beforeEach(() => {
     studentsRepository = new InMemoryStudentsRepository()
-    sut = new CreateStudentUseCase(studentsRepository)
+    universityServersRepository = new InMemoryUniversityServersRepository()
+    sut = new CreateStudentUseCase(
+      studentsRepository,
+      universityServersRepository,
+    )
   })
 
   it('should be able to create a student', async () => {

@@ -2,7 +2,6 @@ import { StudentsRepository } from '@/repositories/students-repository'
 import { Student } from '@prisma/client'
 import { StudentAlreadyExistsError } from './errors/student-already-exists'
 import { UniversityServersRepository } from '@/repositories/university-servers-repository'
-import { UniversityServerAlreadyExistsError } from './errors/university-server-already-exists'
 import { UserAlreadyExistsError } from './errors/user-already-exists'
 
 interface CreateStudentUseCaseRequest {

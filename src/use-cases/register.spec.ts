@@ -45,6 +45,7 @@ describe('Register Use Case', () => {
       name: 'Moisés Silva de Azevedo',
       passport: 'moises.azevedo',
       password: 'password',
+      role: 'STUDENT',
     })
     expect(user.id).toEqual(expect.any(String))
     expect(user.role).toEqual('STUDENT')
@@ -60,6 +61,7 @@ describe('Register Use Case', () => {
       name: 'Maria Silva',
       passport: 'maria.silva',
       password: 'password',
+      role: 'UNIVERSITY_SERVER',
     })
     expect(user.id).toEqual(expect.any(String))
     expect(user.role).toEqual('UNIVERSITY_SERVER')

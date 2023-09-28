@@ -1,5 +1,34 @@
 # Restaurante Universitário Digial - API
 
+## RF
+
+- [ ] RF-01, Manter cadastro de usuários, Deve ser possível se cadastrar.
+- [ ] RF-02, Autenticação, Deve ser possível se autenticar.
+- [ ] RF-03, Manter cadastro de pratos, Deve ser possível se autenticar.
+- [ ] RF-04, Obter o prato do dia, Deve ser possível obter o prato do dia.
+- [ ] RF-05, Colocar crédito na carteira, Deve ser possível colocar crédito na carteira.
+- [ ] RF-06, Comprar ficha, Deve ser possível comprar uma ficha.
+- [ ] RF-07, Validar ficha, Deve ser possível validar uma ficha.
+- [ ] RF-08, Listar fichas compradas, Deve ser possível obter a lista de fichas compradas identificadas pelo usuário..
+
+## RNF
+
+- [ ] RNF-01, Segurança, O sistema deve ser protegido por login e senha.
+- [ ] RNF-02, Segurança, A senha do usuário deve ser criptografada..
+- [ ] RNF-03, Integração, O cadastro de estudantes e servidores da universidade deve ser integrado com o Passaporte da UFMS.
+- [ ] RNF-04, Conectividade, Deve haver disponibilidade de conexão com a internet para o sistema funcionar corretamente.
+- [ ] RNF-05, Acessibilidade, Usuários comuns devem conseguir usufruir do restaurante sem a necessidade do celular.
+
+## RN
+
+- [ ] RN-01, Controle de Acesso, Somente administradores devem ser capazes de criar pratos.
+- [ ] RN-02, Controle de Acesso, Somente administradores devem ser capazes de validar fichas.
+- [x] RN-03, Controle de Acesso, Somente administradores devem ser capazes de comprar fichas sem possuírem saldo na carteira.
+- [ ] RN-04, Verificar saldo suficiente, Usuários comuns, servidores da universidade e estudantes só podem comprar uma ficha se possuírem saldo suficiente em suas carteiras.
+- [ ] RN-05, Verificar elegibilidade ao desconto, Somente estudantes que possuem o CADÚnico devem ser capazes de pagar menos ao comprar uma ficha.
+
+
+
 ## Use cases
 
 - [x] register
