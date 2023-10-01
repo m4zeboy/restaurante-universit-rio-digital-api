@@ -14,7 +14,7 @@
 ## RNF
 
 - [ ] RNF-01, Segurança, O sistema deve ser protegido por login e senha.
-- [ ] RNF-02, Segurança, A senha do usuário deve ser criptografada..
+- [ ] RNF-02, Segurança, A senha do usuário deve ser criptografada.
 - [ ] RNF-03, Integração, O cadastro de estudantes e servidores da universidade deve ser integrado com o Passaporte da UFMS.
 - [ ] RNF-04, Conectividade, Deve haver disponibilidade de conexão com a internet para o sistema funcionar corretamente.
 - [ ] RNF-05, Acessibilidade, Usuários comuns devem conseguir usufruir do restaurante sem a necessidade do celular.
