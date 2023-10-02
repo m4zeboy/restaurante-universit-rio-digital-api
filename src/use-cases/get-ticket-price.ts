@@ -14,18 +14,19 @@ export class GetTicketPriceUseCase {
   constructor(private studentsRepository: StudentsRepository) { }
 
   async execute(data: GetTicketPriceRequest): Promise<GetTicketPriceCaseReply> {
-    let price: number
     if (data.user.role === 'ADMIN') {
-      price = 0
-    } else {
-      const checkDiscountEligibilityUseCase =
-        new CheckDiscountEligibilityUseCase(this.studentsRepository)
-      const { isEligible } = await checkDiscountEligibilityUseCase.execute({
-        user: data.user,
-      })
-      isEligible ? (price = 3) : (price = 15)
+      return { price: 0 }
     }
 
-    return { price }
+    const checkDiscountEligibility = new CheckDiscountEligibilityUseCase(
+      this.studentsRepository,
+    )
+    const { isEligible } = await checkDiscountEligibility.execute({
+      user: data.user,
+    })
+    if (isEligible) {
+      return { price: 3 }
+    }
+    return { price: 15 }
   }
 }

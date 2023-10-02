@@ -39,11 +39,9 @@ export class PurchaseTicketUseCase {
       throw new ResourceNotFoundError()
     }
 
-    const getTicketPriceUseCase = new GetTicketPriceUseCase(
-      this.studentsRepository,
-    )
+    const getTicketPrice = new GetTicketPriceUseCase(this.studentsRepository)
 
-    const { price } = await getTicketPriceUseCase.execute({ user })
+    const { price } = await getTicketPrice.execute({ user })
 
     if (user.role !== 'ADMIN' && wallet.balance.toNumber() < price) {
       throw new InsuficientBalanceError()
