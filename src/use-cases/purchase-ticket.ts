@@ -5,7 +5,6 @@ import { ResourceNotFoundError } from './errors/resource-not-found'
 import { TicketsRepository } from '@/repositories/tickets-repository'
 import { StudentsRepository } from '@/repositories/students-repository'
 import { InsuficientBalanceError } from './errors/insuficient-balance'
-import { getTicketPrice } from '@/utils/get-ticket-price'
 import { GetTicketPriceUseCase } from './get-ticket-price'
 
 interface PurchaseTicketUseCaseRequest {

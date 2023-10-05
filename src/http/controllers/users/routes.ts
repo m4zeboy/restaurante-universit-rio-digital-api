@@ -5,6 +5,7 @@ import { students } from './students'
 import { universityServers } from './university-servers'
 import { verifyJWT } from '@/http/middlewares/verify-jwt'
 import { verifyRole } from '@/http/middlewares/verify-role'
+import { profile } from './profile'
 
 export async function usersRoutes(app: FastifyInstance) {
   app.post('/users', register)
@@ -23,4 +24,5 @@ export async function usersRoutes(app: FastifyInstance) {
     },
     universityServers,
   )
+  app.get('/profile', { onRequest: [verifyJWT] }, profile)
 }

@@ -39,7 +39,6 @@ export async function authenticate(
         },
       },
     )
-
     return reply
       .setCookie('refreshToken', refreshToken, {
         path: '/',
@@ -48,7 +47,7 @@ export async function authenticate(
         httpOnly: true,
       })
       .status(201)
-      .send({ token })
+      .send({ user: { ...user, password_hash: undefined }, token })
   } catch (error) {
     if (error instanceof InvalidCredentialsError) {
       return reply.status(400).send({
