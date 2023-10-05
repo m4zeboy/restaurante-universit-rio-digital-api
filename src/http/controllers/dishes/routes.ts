@@ -11,12 +11,5 @@ export async function dishesRoutes(app: FastifyInstance) {
     },
     dishes,
   )
-  app.get(
-    '/dishes/today',
-    {
-      onRequest: async () =>
-        verifyRole(['ADMIN', 'STUDENT', 'UNIVERSITY_SERVER', 'USER']),
-    },
-    getDishOfTheDay,
-  )
+  app.get('/dishes/today', getDishOfTheDay)
 }
