@@ -27,7 +27,15 @@ export class PrismaDishesRepository implements DishesRepository {
   }
 
   async findByDate(date: Date) {
-    const item = await prisma.dish.findFirst({ where: { date } })
+    const today = new Date()
+    const item = await prisma.dish.findFirst({
+      where: {
+        date: {
+          gte: today, // greater than or equal to today
+          lt: new Date(today.getTime() + 24 * 60 * 60 * 1000), // less than tomorrow
+        },
+      },
+    })
     return item
   }
 }

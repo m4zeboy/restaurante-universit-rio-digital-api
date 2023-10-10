@@ -15,7 +15,8 @@ export class GetDishOfTheDayUseCase {
   async execute(
     data: GetDishOfTheDayUseCaseRequest,
   ): Promise<GetDishOfTheDayUseCaseReply> {
-    const dish = await this.dishesRepository.findByDate(new Date(data.date))
+    const today = new Date(data.date)
+    const dish = await this.dishesRepository.findByDate(today)
     return { dish }
   }
 }

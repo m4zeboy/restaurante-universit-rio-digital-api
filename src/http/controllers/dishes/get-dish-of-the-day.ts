@@ -13,7 +13,6 @@ export async function getDishOfTheDay(
   const day = String(currentDate.getDate()).padStart(2, '0')
 
   const date = `${year}-${month}-${day}`
-
   const { dish } = await useCase.execute({ date })
   return reply.status(201).send({ dish })
 }
