@@ -7,6 +7,7 @@ import { dishesRoutes } from './http/controllers/dishes/routes'
 import { appRoutes } from './http/controllers/routes'
 import cors from '@fastify/cors'
 import fastifyCookie from '@fastify/cookie'
+import { purchasesRoutes } from './http/controllers/purchases/routes'
 
 export const app = fastify()
 
@@ -43,4 +44,5 @@ app.register(cors)
 
 app.register(usersRoutes)
 app.register(dishesRoutes)
+app.register(purchasesRoutes)
 app.register(appRoutes)
