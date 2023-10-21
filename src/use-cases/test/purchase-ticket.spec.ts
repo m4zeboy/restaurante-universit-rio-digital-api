@@ -2,7 +2,7 @@ import { expect, describe, it, beforeEach } from 'vitest'
 import { InMemoryUsersRepository } from '@/repositories/in-memory/in-memory-users-repository'
 import { InMemoryWalletsRepository } from '@/repositories/in-memory/in-memory-wallets-repository'
 import { InMemoryTicketsRepository } from '@/repositories/in-memory/in-memory-tickets-repository'
-import { PurchaseTicketUseCase } from './purchase-ticket'
+import { PurchaseTicketUseCase } from '../purchase-ticket'
 import { InMemoryStudentsRepository } from '@/repositories/in-memory/in-memory-students-repository'
 
 let usersRepository: InMemoryUsersRepository

@@ -1,7 +1,7 @@
 import { expect, describe, it, beforeEach } from 'vitest'
 
 import { InMemoryDishesRepository } from '@/repositories/in-memory/in-memory-dishes-repository'
-import { CreateDishesUseCase } from './create-dishes'
+import { CreateDishesUseCase } from '../create-dishes'
 
 let dishesRepository: InMemoryDishesRepository
 let sut: CreateDishesUseCase

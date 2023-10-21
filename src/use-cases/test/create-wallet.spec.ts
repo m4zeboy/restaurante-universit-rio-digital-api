@@ -1,9 +1,9 @@
 import { expect, describe, it, beforeEach } from 'vitest'
 import { InMemoryUsersRepository } from '@/repositories/in-memory/in-memory-users-repository'
 import { InMemoryWalletsRepository } from '@/repositories/in-memory/in-memory-wallets-repository'
-import { CreateWalletUseCase } from './create-wallet'
-import { ResourceNotFoundError } from './errors/resource-not-found'
-import { WalletAlreadyExistsError } from './errors/wallet-already-exists'
+import { CreateWalletUseCase } from '../create-wallet'
+import { ResourceNotFoundError } from '../errors/resource-not-found'
+import { WalletAlreadyExistsError } from '../errors/wallet-already-exists'
 
 let usersRepository: InMemoryUsersRepository
 let walletsRepository: InMemoryWalletsRepository

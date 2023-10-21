@@ -1,7 +1,7 @@
 import { expect, describe, it, beforeEach } from 'vitest'
 import { InMemoryTicketsRepository } from '@/repositories/in-memory/in-memory-tickets-repository'
-import { ValidateUseCase } from './validate'
-import { ResourceNotFoundError } from './errors/resource-not-found'
+import { ValidateUseCase } from '../validate'
+import { ResourceNotFoundError } from '../errors/resource-not-found'
 
 let ticketsRepository: InMemoryTicketsRepository
 let sut: ValidateUseCase

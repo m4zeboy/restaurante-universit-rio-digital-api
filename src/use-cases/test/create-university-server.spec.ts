@@ -1,7 +1,7 @@
 import { expect, describe, it, beforeEach } from 'vitest'
 import { InMemoryUniversityServersRepository } from '@/repositories/in-memory/in-memory-univeresity-servers-repository'
-import { CreateUniversityServerUseCase } from './create-university-server'
-import { UniversityServerAlreadyExistsError } from './errors/university-server-already-exists'
+import { CreateUniversityServerUseCase } from '../create-university-server'
+import { UniversityServerAlreadyExistsError } from '../errors/university-server-already-exists'
 import { InMemoryStudentsRepository } from '@/repositories/in-memory/in-memory-students-repository'
 
 let universityServersRepository: InMemoryUniversityServersRepository

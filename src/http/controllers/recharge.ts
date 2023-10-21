@@ -6,7 +6,7 @@ import { z } from 'zod'
 
 export async function recharge(request: FastifyRequest, reply: FastifyReply) {
   const rechargeBodySchema = z.object({
-    amount: z.number().gt(0),
+    amount: z.coerce.number().gt(0),
   })
 
   const data = rechargeBodySchema.parse(request.body)

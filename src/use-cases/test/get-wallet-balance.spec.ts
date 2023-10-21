@@ -1,7 +1,7 @@
 import { expect, describe, it, beforeEach } from 'vitest'
 import { InMemoryUsersRepository } from '@/repositories/in-memory/in-memory-users-repository'
 import { InMemoryWalletsRepository } from '@/repositories/in-memory/in-memory-wallets-repository'
-import { GetWalletBalanceUseCase } from './get-wallet-balance'
+import { GetWalletBalanceUseCase } from '../get-wallet-balance'
 import { Decimal } from '@prisma/client/runtime/library'
 
 let usersRepository: InMemoryUsersRepository

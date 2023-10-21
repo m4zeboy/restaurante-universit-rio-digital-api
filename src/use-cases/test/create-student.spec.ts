@@ -1,7 +1,7 @@
 import { expect, describe, it, beforeEach } from 'vitest'
 import { InMemoryStudentsRepository } from '@/repositories/in-memory/in-memory-students-repository'
-import { CreateStudentUseCase } from './create-student'
-import { StudentAlreadyExistsError } from './errors/student-already-exists'
+import { CreateStudentUseCase } from '../create-student'
+import { StudentAlreadyExistsError } from '../errors/student-already-exists'
 import { InMemoryUniversityServersRepository } from '@/repositories/in-memory/in-memory-univeresity-servers-repository'
 
 let studentsRepository: InMemoryStudentsRepository

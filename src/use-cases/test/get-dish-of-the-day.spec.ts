@@ -1,7 +1,7 @@
 import { expect, describe, it, beforeEach, vi } from 'vitest'
 import { InMemoryDishesRepository } from '@/repositories/in-memory/in-memory-dishes-repository'
 import { afterEach } from 'node:test'
-import { GetDishOfTheDayUseCase } from './get-dish-of-the-day'
+import { GetDishOfTheDayUseCase } from '../get-dish-of-the-day'
 
 let dishesRepository: InMemoryDishesRepository
 let sut: GetDishOfTheDayUseCase
