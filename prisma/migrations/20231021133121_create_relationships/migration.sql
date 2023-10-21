@@ -1,5 +1,5 @@
 -- CreateEnum
-CREATE TYPE "Role" AS ENUM ('ADMIN', 'STUDENT', 'UNIVERSITY_SERVER', 'DEFAULT');
+CREATE TYPE "Role" AS ENUM ('ADMIN', 'STUDENT', 'UNIVERSITY_SERVER', 'USER');
 
 -- CreateTable
 CREATE TABLE "users" (
@@ -7,7 +7,7 @@ CREATE TABLE "users" (
     "name" TEXT NOT NULL,
     "passport" TEXT NOT NULL,
     "password_hash" TEXT NOT NULL,
-    "role" "Role" NOT NULL DEFAULT 'DEFAULT',
+    "role" "Role" NOT NULL DEFAULT 'USER',
 
     CONSTRAINT "users_pkey" PRIMARY KEY ("id")
 );
@@ -17,7 +17,7 @@ CREATE TABLE "students" (
     "id" TEXT NOT NULL,
     "rga" TEXT NOT NULL,
     "unique_register" TEXT,
-    "user_id" TEXT NOT NULL,
+    "passport" TEXT NOT NULL,
 
     CONSTRAINT "students_pkey" PRIMARY KEY ("id")
 );
@@ -26,7 +26,7 @@ CREATE TABLE "students" (
 CREATE TABLE "university_servers" (
     "id" TEXT NOT NULL,
     "siape" TEXT NOT NULL,
-    "user_id" TEXT NOT NULL,
+    "passport" TEXT NOT NULL,
 
     CONSTRAINT "university_servers_pkey" PRIMARY KEY ("id")
 );
@@ -61,6 +61,20 @@ CREATE TABLE "tickets" (
     CONSTRAINT "tickets_pkey" PRIMARY KEY ("id")
 );
 
+-- CreateTable
+CREATE TABLE "dishes" (
+    "id" TEXT NOT NULL,
+    "main_dish" TEXT NOT NULL,
+    "vegan_main_dish" TEXT NOT NULL,
+    "follow_up" TEXT NOT NULL,
+    "base_dish" TEXT NOT NULL,
+    "salad" TEXT NOT NULL,
+    "dessert" TEXT NOT NULL,
+    "date" TIMESTAMP(3) NOT NULL,
+
+    CONSTRAINT "dishes_pkey" PRIMARY KEY ("id")
+);
+
 -- CreateIndex
 CREATE UNIQUE INDEX "users_passport_key" ON "users"("passport");
 
@@ -68,13 +82,16 @@ CREATE UNIQUE INDEX "users_passport_key" ON "users"("passport");
 CREATE UNIQUE INDEX "students_rga_key" ON "students"("rga");
 
 -- CreateIndex
+CREATE UNIQUE INDEX "students_passport_key" ON "students"("passport");
+
+-- CreateIndex
 CREATE UNIQUE INDEX "university_servers_siape_key" ON "university_servers"("siape");
 
--- AddForeignKey
-ALTER TABLE "students" ADD CONSTRAINT "students_user_id_fkey" FOREIGN KEY ("user_id") REFERENCES "users"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
+-- CreateIndex
+CREATE UNIQUE INDEX "university_servers_passport_key" ON "university_servers"("passport");
 
--- AddForeignKey
-ALTER TABLE "university_servers" ADD CONSTRAINT "university_servers_user_id_fkey" FOREIGN KEY ("user_id") REFERENCES "users"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
+-- CreateIndex
+CREATE UNIQUE INDEX "wallets_user_id_key" ON "wallets"("user_id");
 
 -- AddForeignKey
 ALTER TABLE "wallets" ADD CONSTRAINT "wallets_user_id_fkey" FOREIGN KEY ("user_id") REFERENCES "users"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
