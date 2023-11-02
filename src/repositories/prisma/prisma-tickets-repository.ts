@@ -18,6 +18,9 @@ export class PrismaTicketsRepository implements TicketsRepository {
   async findManyByWalletId(walletId: string) {
     const items = await prisma.ticket.findMany({
       where: { wallet_id: walletId },
+      orderBy: {
+        purchased_at: 'desc',
+      },
     })
     return items
   }
