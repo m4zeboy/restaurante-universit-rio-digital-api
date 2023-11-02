@@ -19,8 +19,8 @@ export async function register(request: FastifyRequest, reply: FastifyReply) {
       .optional(),
   })
 
+  console.log(request.body)
   const data = registerBodySchema.parse(request.body)
-
   const registerUseCase = makeRegister()
   const createWalletUseCase = makeCreateWallet()
   try {
@@ -28,6 +28,7 @@ export async function register(request: FastifyRequest, reply: FastifyReply) {
     const { wallet } = await createWalletUseCase.execute({ userId: user.id })
     return reply.status(201).send({ wallet })
   } catch (error) {
+    console.log(error)
     if (
       error instanceof UserAlreadyExistsError ||
       error instanceof WalletAlreadyExistsError ||
