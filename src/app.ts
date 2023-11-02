@@ -40,7 +40,9 @@ app.register(fastifyJwt, {
 
 app.register(fastifyCookie)
 
-app.register(cors)
+app.register(cors, {
+  origin: '*',
+})
 
 app.register(usersRoutes)
 app.register(dishesRoutes)
