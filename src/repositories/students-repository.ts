@@ -3,7 +3,7 @@ import { Student } from '@prisma/client'
 export interface StudentsRepository {
   create(data: {
     rga: string
-    uniqueRegister?: string
+    unique_register?: string
     passport: string
   }): Promise<Student>
 
