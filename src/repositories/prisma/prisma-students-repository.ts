@@ -4,7 +4,7 @@ import { StudentsRepository } from '../students-repository'
 export class PrismaStudentsRepository implements StudentsRepository {
   async create(data: {
     rga: string
-    uniqueRegister?: string | undefined
+    unique_register?: string | undefined
     passport: string
   }) {
     const item = await prisma.student.create({ data })

@@ -4,15 +4,16 @@ import { hash } from 'bcryptjs'
 import { UserAlreadyExistsError } from './errors/user-already-exists'
 import { StudentsRepository } from '@/repositories/students-repository'
 import { UniversityServersRepository } from '@/repositories/university-servers-repository'
-import { YouAreNotAStudentError } from './errors/you-are-not-a-student'
-import { YouAreNotAUniversityServerError } from './errors/you-are-not-a-university-server'
 
-interface RegisterUseCaseRequest {
+type RegisterUseCaseRequest = {
   id?: string
   name: string
   passport: string
   password: string
   role?: Role
+  rga?: string
+  uniqueRegister?: string
+  siape?: string
 }
 
 interface RegisterUseCaseReply {
@@ -37,21 +38,17 @@ export class RegisterUseCase {
 
     const passwordHash = await hash(data.password, 6)
 
-    const doesExistAUserWithSamePassport =
-      await this.studentsRepository.findByPassport(data.passport)
-
-    if (data.role === 'STUDENT' && !doesExistAUserWithSamePassport) {
-      throw new YouAreNotAStudentError()
-    }
-
-    const doesExistAUniversityServerWithSamePassport =
-      await this.universityServersRepository.findByPassport(data.passport)
-
-    if (
-      data.role === 'UNIVERSITY_SERVER' &&
-      !doesExistAUniversityServerWithSamePassport
-    ) {
-      throw new YouAreNotAUniversityServerError()
+    if (data.role === 'STUDENT') {
+      await this.studentsRepository.create({
+        passport: data.passport,
+        rga: data.rga!,
+        unique_register: data.uniqueRegister,
+      })
+    } else if (data.role === 'UNIVERSITY_SERVER') {
+      await this.universityServersRepository.create({
+        passport: data.passport,
+        siape: data.siape!,
+      })
     }
 
     const user = await this.usersRepository.create({

@@ -15,11 +15,12 @@ export async function register(request: FastifyRequest, reply: FastifyReply) {
     password: z.string(),
     role: z
       .enum(['ADMIN', 'USER', 'STUDENT', 'UNIVERSITY_SERVER'])
-      .default('USER')
-      .optional(),
+      .default('USER'),
+    rga: z.string().optional(),
+    uniqueRegister: z.string().optional(),
+    siape: z.string().optional(),
   })
 
-  console.log(request.body)
   const data = registerBodySchema.parse(request.body)
   const registerUseCase = makeRegister()
   const createWalletUseCase = makeCreateWallet()
