@@ -64,10 +64,38 @@ model WalletRecharge {
 
   created_at DateTime @default(now())
 
-  wallet    Wallet @relation(fields: [wallet_id], references: [id])
-  wallet_id String
+  wallet          Wallet            @relation(fields: [wallet_id], references: [id])
+  wallet_id       String
+  RechargePayment RechargePayment[]
 
   @@map("wallet_recharges")
+}
+
+enum RechargePaymentStatus {
+  PENDING
+  APPROVED
+  CANCELED
+}
+
+enum RechargePaymentType {
+  CREDIT_CARD
+  PIX
+}
+
+model RechargePayment {
+  id String @id @default(uuid())
+
+  recharge           WalletRecharge @relation(fields: [wallet_recharge_id], references: [id])
+  wallet_recharge_id String         @unique
+
+  amount          Decimal
+  status          RechargePaymentStatus @default(PENDING)
+  type            RechargePaymentType   @default(CREDIT_CARD)
+  name_in_card    String?
+  card_number     String?
+  expiration_date DateTime?
+  cvc             Int?
+  qr_code         String?
 }
 
 model Ticket {

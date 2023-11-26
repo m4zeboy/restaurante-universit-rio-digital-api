@@ -24,6 +24,7 @@ export async function dishes(request: FastifyRequest, reply: FastifyReply) {
     })
     return reply.status(201).send({ dish })
   } catch (error) {
+    console.log(error)
     if (error instanceof DishAlreadyExists) {
       return reply.status(409).send({
         message: error.message,
