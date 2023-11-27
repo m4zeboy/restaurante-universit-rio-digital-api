@@ -4,9 +4,12 @@ import { makeRechargeWallet } from '@/use-cases/factories/make-recharge-wallet'
 import { FastifyReply, FastifyRequest } from 'fastify'
 import { z } from 'zod'
 
-export async function recharge(request: FastifyRequest, reply: FastifyReply) {
+export async function requestRecharge(
+  request: FastifyRequest,
+  reply: FastifyReply,
+) {
   const rechargeBodySchema = z.object({
-    amount: z.coerce.number().gt(0),
+    requestedAmount: z.coerce.number().gt(0),
   })
 
   const data = rechargeBodySchema.parse(request.body)
@@ -14,7 +17,7 @@ export async function recharge(request: FastifyRequest, reply: FastifyReply) {
   const useCase = makeRechargeWallet()
   try {
     const { walletRecharge } = await useCase.execute({
-      amount: data.amount,
+      requestedAmount: data.requestedAmount,
       userId: request.user.sub,
     })
 

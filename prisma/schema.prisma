@@ -57,10 +57,18 @@ model Wallet {
   @@map("wallets")
 }
 
+enum WalletRechargeStatus {
+  REQUESTED
+  APPROVED
+  CANCELED
+}
+
 model WalletRecharge {
   id String @id @default(uuid())
 
-  amount Decimal
+  requested_amount Decimal
+
+  status WalletRechargeStatus @default(REQUESTED)
 
   created_at DateTime @default(now())
 

@@ -1,3 +1,4 @@
+import { PaymentRepository } from '@/repositories/payment-repository'
 import { PaymentStrategy } from './payment-strategy'
 
 export class PaymentContext {

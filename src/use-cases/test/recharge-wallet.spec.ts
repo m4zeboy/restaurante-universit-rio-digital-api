@@ -2,7 +2,7 @@ import { expect, describe, it, beforeEach } from 'vitest'
 import { InMemoryUsersRepository } from '@/repositories/in-memory/in-memory-users-repository'
 import { InMemoryWalletsRepository } from '@/repositories/in-memory/in-memory-wallets-repository'
 import { InMemoryWalletRechargesRepository } from '@/repositories/in-memory/in-memory-wallet-recharges-repository'
-import { RechargeWalletUseCase } from '../recharge-wallet'
+import { RechargeWalletUseCase } from '../request-recharge'
 import { InvalidRechargeAmountError } from '../errors/invalid-recharge-amount'
 
 let usersRepository: InMemoryUsersRepository

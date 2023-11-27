@@ -9,5 +9,8 @@ export interface CreatePaymentData {
 export interface PaymentRepository {
   create(data: CreatePaymentData): Promise<RechargePayment>
 
-  // findByDate(date: Date): Promise<Dish | null>
+  updateStatus(data: {
+    id: string
+    status: 'APPROVED' | 'CANCELED'
+  }): Promise<RechargePayment>
 }

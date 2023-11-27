@@ -25,26 +25,14 @@ export class CreditCardPayment implements PaymentStrategy {
   }
 
   async pay(amount: number) {
-    try {
-      this.validateCreditCard()
-      await prisma.rechargePayment.update({
-        where: {
-          id: this.payment.id,
-        },
-        data: {
-          status: 'APPROVED',
-        },
-      })
-    } catch (err) {
-      await prisma.rechargePayment.update({
-        where: {
-          id: this.payment.id,
-        },
-        data: {
-          status: 'CANCELED',
-        },
-      })
-      throw err
-    }
+    this.validateCreditCard()
+    await prisma.rechargePayment.update({
+      where: {
+        id: this.payment.id,
+      },
+      data: {
+        status: 'APPROVED',
+      },
+    })
   }
 }

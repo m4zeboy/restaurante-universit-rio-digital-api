@@ -4,13 +4,14 @@ import { UsersRepository } from '@/repositories/users-repository'
 import { ResourceNotFoundError } from './errors/resource-not-found'
 import { WalletRechargesRepository } from '@/repositories/wallet-recharges-repository'
 import { InvalidRechargeAmountError } from './errors/invalid-recharge-amount'
+import { PaymentRepository } from '@/repositories/payment-repository'
 
-interface RechargeWalletUseCaseRequest {
+interface RequestRechargeUseCaseRequest {
   userId: string
-  amount: number
+  requestedAmount: number
 }
 
-interface RechargeWalletUseCaseReply {
+interface RequestRechargeUseCaseReply {
   walletRecharge: WalletRecharge
 }
 
@@ -49,7 +50,7 @@ o valor é acrescentado a carteira do usuário
 
 */
 
-export class RechargeWalletUseCase {
+export class RequestRechargeWalletUseCase {
   constructor(
     private walletsRepository: WalletsRepository,
     private usersRepository: UsersRepository,
@@ -57,8 +58,8 @@ export class RechargeWalletUseCase {
   ) { }
 
   async execute(
-    data: RechargeWalletUseCaseRequest,
-  ): Promise<RechargeWalletUseCaseReply> {
+    data: RequestRechargeUseCaseRequest,
+  ): Promise<RequestRechargeUseCaseReply> {
     const doesUserExist = await this.usersRepository.findById(data.userId)
 
     if (!doesUserExist) {
@@ -71,18 +72,13 @@ export class RechargeWalletUseCase {
       throw new ResourceNotFoundError()
     }
 
-    if (data.amount <= 0) {
+    if (data.requestedAmount <= 0) {
       throw new InvalidRechargeAmountError()
     }
 
     const walletRecharge = await this.walletRechargesRepository.create({
-      amount: data.amount,
+      requestedAmount: data.requestedAmount,
       walletId: wallet.id,
-    })
-
-    await this.walletsRepository.updateBalance({
-      walletId: wallet.id,
-      amount: data.amount,
     })
 
     return { walletRecharge }
