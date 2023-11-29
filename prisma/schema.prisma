@@ -98,7 +98,7 @@ model RechargePayment {
 
   amount          Decimal
   status          RechargePaymentStatus @default(PENDING)
-  type            RechargePaymentType   @default(CREDIT_CARD)
+  type            RechargePaymentType?
   name_in_card    String?
   card_number     String?
   expiration_date DateTime?

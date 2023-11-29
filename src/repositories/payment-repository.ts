@@ -12,4 +12,13 @@ export interface PaymentRepository {
     id: string
     status: $Enums.RechargePaymentStatus
   }): Promise<RechargePayment | null>
+
+  findById(id: string): Promise<RechargePayment | null>
+  setPaymentMethod({
+    id,
+    type,
+  }: {
+    id: string
+    type: $Enums.RechargePaymentType
+  }): Promise<RechargePayment | null>
 }
