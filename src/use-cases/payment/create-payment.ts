@@ -1,21 +1,15 @@
 import { WalletRechargesRepository } from '@/repositories/wallet-recharges-repository'
 import { RechargePayment } from '@prisma/client'
 import { ResourceNotFoundError } from '../errors/resource-not-found'
-import { prisma } from '@/lib/prisma'
 import { PaymentRepository } from '@/repositories/payment-repository'
 
 interface CreatePaymentUseCaseRequest {
   walletRechargeId: string
   amount: number
-  type: 'CREDIT_CARD' | 'PIX'
-  name_in_card?: string
-  card_number?: string
-  expiration_date?: string
-  cvc?: number
 }
 
 interface CreatePaymentUseCaseReply {
-  payment: RechargePayment | null
+  payment: RechargePayment
 }
 
 export class CreatePaymentUseCase {

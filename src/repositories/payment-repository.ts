@@ -1,9 +1,8 @@
-import { Prisma, RechargePayment } from '@prisma/client'
+import { $Enums, RechargePayment } from '@prisma/client'
 
 export interface CreatePaymentData {
   walletRechargeId: string
   amount: number
-  type: 'CREDIT_CARD' | 'PIX'
 }
 
 export interface PaymentRepository {
@@ -11,6 +10,6 @@ export interface PaymentRepository {
 
   updateStatus(data: {
     id: string
-    status: 'APPROVED' | 'CANCELED'
-  }): Promise<RechargePayment>
+    status: $Enums.RechargePaymentStatus
+  }): Promise<RechargePayment | null>
 }
