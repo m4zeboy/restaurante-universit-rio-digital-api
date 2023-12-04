@@ -24,7 +24,7 @@ export async function setPaymentMethod(
       paymentId,
       paymentMethod,
     })
-    return reply.status(201).send({ payment })
+    return reply.status(200).send({ payment })
   } catch (error) {
     if (error instanceof ResourceNotFoundError) {
       return reply.status(404).send({

@@ -17,12 +17,14 @@ interface SetCreditCardUseCaseReply {
 export class SetCreditCardUseCase {
   constructor(private paymentRepository: PaymentRepository) { }
 
-  async execute(
-    data: SetCreditCardUseCaseRequest,
-  ): Promise<SetCreditCardUseCaseReply> {
-    const doesPaymentExists = await this.paymentRepository.findById(
-      data.paymentId,
-    )
+  async execute({
+    card_number,
+    cvc,
+    expiration_date,
+    name_in_card,
+    paymentId,
+  }: SetCreditCardUseCaseRequest): Promise<SetCreditCardUseCaseReply> {
+    const doesPaymentExists = await this.paymentRepository.findById(paymentId)
     if (!doesPaymentExists) {
       throw new ResourceNotFoundError()
     }
@@ -32,7 +34,13 @@ export class SetCreditCardUseCase {
       throw new Error('This payment is not a credit card payment.')
     }
 
-    const payment = await this.paymentRepository.setCreditCard(data)
+    const payment = await this.paymentRepository.setCreditCard({
+      card_number,
+      cvc,
+      expiration_date: new Date(expiration_date),
+      name_in_card,
+      paymentId,
+    })
     return { payment }
   }
 }

@@ -26,7 +26,7 @@ export interface PaymentRepository {
     paymentId: string
     name_in_card: string
     card_number: string
-    expiration_date: string
+    expiration_date: Date
     cvc: number
   }): Promise<RechargePayment | null>
 }
