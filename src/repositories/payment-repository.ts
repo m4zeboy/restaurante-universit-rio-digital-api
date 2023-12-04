@@ -21,4 +21,12 @@ export interface PaymentRepository {
     id: string
     type: $Enums.RechargePaymentType
   }): Promise<RechargePayment | null>
+
+  setCreditCard(data: {
+    paymentId: string
+    name_in_card: string
+    card_number: string
+    expiration_date: string
+    cvc: number
+  }): Promise<RechargePayment | null>
 }

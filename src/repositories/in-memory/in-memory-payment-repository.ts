@@ -6,6 +6,22 @@ import { randomUUID } from 'node:crypto'
 export class InMemoryPaymentRepository implements PaymentRepository {
   public items: RechargePayment[] = []
 
+  async setCreditCard(data: {
+    paymentId: string
+    name_in_card: string
+    card_number: string
+    expiration_date: string
+    cvc: number
+  }) {
+    const item = this.items.find((item) => item.id === data.paymentId)
+    if (!item) return null
+    item.card_number = data.card_number
+    item.name_in_card = data.name_in_card
+    item.expiration_date = new Date(data.expiration_date)
+    item.cvc = data.cvc
+    return item
+  }
+
   async findById(id: string): Promise<{
     id: string
     wallet_recharge_id: string

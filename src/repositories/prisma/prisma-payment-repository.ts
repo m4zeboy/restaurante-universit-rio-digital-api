@@ -3,6 +3,27 @@ import { CreatePaymentData, PaymentRepository } from '../payment-repository'
 import { prisma } from '@/lib/prisma'
 
 export class PrismaPaymentRepository implements PaymentRepository {
+  async setCreditCard(data: {
+    paymentId: string
+    name_in_card: string
+    card_number: string
+    expiration_date: string
+    cvc: number
+  }) {
+    const item = await prisma.rechargePayment.update({
+      where: {
+        id: data.paymentId,
+      },
+      data: {
+        name_in_card: data.name_in_card,
+        card_number: data.card_number,
+        expiration_date: data.expiration_date,
+        cvc: data.cvc,
+      },
+    })
+    return item
+  }
+
   async findById(id: string) {
     const item = await prisma.rechargePayment.findUnique({ where: { id } })
     return item
