@@ -1,4 +1,4 @@
-import { TestDishesRepository } from "test/repositories/dishes-repository"
+import { TestDishesRepository } from "test/repositories/test-dishes-repository"
 import { CreateDishUseCase } from "./create-dish"
 
 let testDishesRepository: TestDishesRepository
